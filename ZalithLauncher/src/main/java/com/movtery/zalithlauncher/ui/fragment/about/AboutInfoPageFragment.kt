@@ -44,6 +44,7 @@ class AboutInfoPageFragment() : Fragment(R.layout.fragment_about_info_page) {
         val context = requireActivity()
 
         binding.apply {
+            title.text = InfoDistributor.APP_NAME
             dec1.text = InfoCenter.replaceName(context, R.string.about_dec1)
             dec2.text = InfoCenter.replaceName(context, R.string.about_dec2)
             dec3.text = InfoCenter.replaceName(context, R.string.about_dec3)
@@ -94,7 +95,7 @@ class AboutInfoPageFragment() : Fragment(R.layout.fragment_about_info_page) {
         mAboutData.add(
             AboutItemBean(
                 resources.getDrawable(R.drawable.image_about_movtery, requireContext().theme),
-                "墨北MovTery",
+                "xRealFitrex",
                 getString(R.string.about_MovTery_desc),
                 AboutItemButtonBean(
                     requireActivity(),
