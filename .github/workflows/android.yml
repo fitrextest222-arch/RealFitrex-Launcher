@@ -50,16 +50,16 @@ jobs:
           mkdir out
           ./gradlew jre_lwjgl3glfw:build --no-daemon
 
-      - name: Build Debug ${{ matrix.arch }}
+      - name: Build RealFitrex Debug ${{ matrix.arch }}
         run: |
           chmod +x gradlew
           ./gradlew ZalithLauncher:assembleDebug -Darch=${{ matrix.arch }}
 
-      - name: Upload Debug ${{matrix.arch}}
+      - name: Upload RealFitrex Debug ${{matrix.arch}}
         continue-on-error: true
         uses: actions/upload-artifact@v4
         with:
-          name: ZalithLauncher(Debug) ${{ matrix.arch }}
+          name: RealFitrexLauncher(Debug) ${{ matrix.arch }}
           path: ZalithLauncher/build/outputs/apk/debug/*
 
   BuildDebug:
@@ -86,13 +86,13 @@ jobs:
           mkdir out
           ./gradlew jre_lwjgl3glfw:build --no-daemon
 
-      - name: Build Debug ${{matrix.arch}}
+      - name: Build RealFitrex Debug ${{matrix.arch}}
         run: |
           chmod +x gradlew
           ./gradlew ZalithLauncher:assembleDebug -Darch=${{ matrix.arch }}
 
-      - name: Upload Debug ${{matrix.arch}}
+      - name: Upload RealFitrex Debug ${{matrix.arch}}
         uses: actions/upload-artifact@v4
         with:
-          name: ZalithLauncher(Debug) ${{ matrix.arch }}
+          name: RealFitrexLauncher(Debug) ${{ matrix.arch }}
           path: ZalithLauncher/build/outputs/apk/debug/*
