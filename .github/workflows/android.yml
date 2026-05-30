@@ -50,19 +50,17 @@ jobs:
           mkdir out
           ./gradlew jre_lwjgl3glfw:build --no-daemon
 
-      - name: Build Release ${{ matrix.arch }}
-        env:
-          MOVTERY_KEYSTORE_PASSWORD: ${{ secrets.MOVTERY_KEYSTORE_PASSWORD }}
+      - name: Build Debug ${{ matrix.arch }}
         run: |
           chmod +x gradlew
-          ./gradlew ZalithLauncher:assemblerelease -Darch=${{ matrix.arch }}
+          ./gradlew ZalithLauncher:assembleDebug -Darch=${{ matrix.arch }}
 
-      - name: Upload Release ${{matrix.arch}}
+      - name: Upload Debug ${{matrix.arch}}
         continue-on-error: true
         uses: actions/upload-artifact@v4
         with:
-          name: ZalithLauncher(Release) ${{ matrix.arch }}
-          path: ZalithLauncher/build/outputs/apk/release/*
+          name: ZalithLauncher(Debug) ${{ matrix.arch }}
+          path: ZalithLauncher/build/outputs/apk/debug/*
 
   BuildDebug:
     if: ${{ startsWith(github.ref, 'refs/pull/') || github.ref_name != 'main' }}
