@@ -24,7 +24,10 @@ jobs:
       - name: Set build type
         id: set-env
         run: |
-          COMMIT_MSG="${{ github.event.head_commit.message }}"
+          COMMIT_MSG=$(cat <<'EOF'
+            ${{ github.event.head_commit.message }}
+          EOF
+          )
           BUILD_TYPE="DEBUG"
 
           if [[ "$COMMIT_MSG" == *"pre-release"* ]]; then
