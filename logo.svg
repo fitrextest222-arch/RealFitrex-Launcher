@@ -1,10 +1,81 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <defs>
-    <linearGradient id="g" x1="0" x2="1">
-      <stop offset="0" stop-color="#26BFA8"/>
-      <stop offset="1" stop-color="#0FA06F"/>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16213e;stop-opacity:1" />
     </linearGradient>
+    <linearGradient id="hexTop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7b2fff" />
+      <stop offset="100%" style="stop-color:#4a00e0" />
+    </linearGradient>
+    <linearGradient id="hexLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3d00b8" />
+      <stop offset="100%" style="stop-color:#2a007a" />
+    </linearGradient>
+    <linearGradient id="hexRight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#9d4dff" />
+      <stop offset="100%" style="stop-color:#7b2fff" />
+    </linearGradient>
+    <linearGradient id="blockTop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00e5ff" />
+      <stop offset="100%" style="stop-color:#00b8d4" />
+    </linearGradient>
+    <linearGradient id="blockLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0077b6" />
+      <stop offset="100%" style="stop-color:#005f8a" />
+    </linearGradient>
+    <linearGradient id="blockRight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0096c7" />
+      <stop offset="100%" style="stop-color:#0077b6" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#4a00e0" flood-opacity="0.5"/>
+    </filter>
   </defs>
-  <rect width="100%" height="100%" rx="64" fill="url(#g)"/>
-  <text x="50%" y="54%" font-family="sans-serif" font-size="220" fill="#fff" font-weight="700" text-anchor="middle" alignment-baseline="middle">RF</text>
+
+  <circle cx="256" cy="256" r="256" fill="url(#bgGrad)"/>
+
+  <circle cx="256" cy="256" r="220" fill="none" stroke="#7b2fff" stroke-width="2" opacity="0.3"/>
+  <circle cx="256" cy="256" r="200" fill="none" stroke="#00e5ff" stroke-width="1" opacity="0.2"/>
+
+  <polygon points="256,90 380,160 256,230 132,160"
+           fill="url(#hexTop)" filter="url(#shadow)"/>
+
+  <polygon points="132,160 256,230 256,370 132,300"
+           fill="url(#hexLeft)"/>
+
+  <polygon points="380,160 380,300 256,370 256,230"
+           fill="url(#hexRight)"/>
+
+  <circle cx="256" cy="245" r="82"
+          fill="white" opacity="0.95" filter="url(#glow)"/>
+
+  <polygon points="256,175 316,208 256,242 196,208"
+           fill="url(#blockTop)"/>
+
+  <polygon points="196,208 256,242 256,308 196,275"
+           fill="url(#blockLeft)"/>
+
+  <polygon points="316,208 316,275 256,308 256,242"
+           fill="url(#blockRight)"/>
+
+  <polygon points="256,175 276,186 256,197 236,186"
+           fill="#00f5ff" opacity="0.4"/>
+
+  <polygon points="276,186 296,197 276,208 256,197"
+           fill="#00f5ff" opacity="0.2"/>
+
+  <circle cx="80" cy="100" r="2" fill="#7b2fff" opacity="0.6"/>
+  <circle cx="420" cy="130" r="1.5" fill="#00e5ff" opacity="0.5"/>
+  <circle cx="100" cy="380" r="2" fill="#00e5ff" opacity="0.4"/>
+  <circle cx="430" cy="390" r="1.5" fill="#7b2fff" opacity="0.6"/>
+  <circle cx="150" cy="450" r="1" fill="#ffffff" opacity="0.3"/>
+  <circle cx="370" cy="60" r="1" fill="#ffffff" opacity="0.3"/>
 </svg>
