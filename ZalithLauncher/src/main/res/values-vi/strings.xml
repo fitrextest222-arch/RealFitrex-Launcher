@@ -654,7 +654,7 @@
     <string name="about_sponsors_desc">Dưới đây là tất cả các nhà tài trợ đã hỗ trợ phát triển, xin cảm ơn rất nhiều!</string>
     <string name="about_sponsors_amount">Thời gian và Tổng số tiền</string>
     <string name="about_button_support_development">Tài trợ phát triển</string>
-    <string name="about_MovTery_desc">Tác giả chính của launcher</string>
+    <string name="about_MovTery_desc">xRealFitrex — Tác giả chính của launcher</string>
     <string name="about_PojavLauncher_desc">Nhóm phát triển của PojavLauncher, đã phát triển và mở nguồn PojavLauncher</string>
     <string name="about_mcmod_desc">Launcher sử dụng bản dịch tiếng Trung của Mod và gói tích hợp từ Bách khoa toàn thư MC</string>
     <string name="about_VeraFirefly_desc">Cung cấp hỗ trợ kỹ thuật về render cho launcher</string>

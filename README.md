@@ -25,10 +25,11 @@ This project is not affiliated with or endorsed by Mojang Studios.
 - Based on ZalithLauncher and PojavLauncher
 
 ## Author
-- **XRealFitrex**
+- **xRealFitrex**
 - **Discord:** [Join server](https://discord.gg/e6wBxVTCat)
 
 ## License
 Licensed under the GPL-3.0 License.
 
 See the [LICENSE](LICENSE) file for details.
+

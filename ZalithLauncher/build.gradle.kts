@@ -27,7 +27,8 @@ val getBuildType = {
     buildType
 }
 
-val nameId = "com.movtery.zalithlauncher"
+val namespaceId = "com.movtery.zalithlauncher"
+val applicationIdName = "com.realfitrex.launcher"
 val generatedZalithDir = file("$buildDir/generated/source/zalith/java")
 val launcherAPPName = project.findProperty("launcher_app_name") as? String ?: error("The \"launcher_app_name\" property is not set in gradle.properties.")
 val launcherName = project.findProperty("launcher_name") as? String ?: error("The \"launcher_name\" property is not set in gradle.properties.")
@@ -43,19 +44,20 @@ configurations {
 
 configure<StringFogExtension> {
     implementation = "com.github.megatronking.stringfog.xor.StringFogImpl"
-    fogPackages = arrayOf(nameId)
+    fogPackages = arrayOf(namespaceId)
     kg = com.github.megatronking.stringfog.plugin.kg.RandomKeyGenerator()
     mode = com.github.megatronking.stringfog.plugin.StringFogMode.bytes
 }
 
 android {
-    namespace = nameId
+    namespace = namespaceId
     compileSdk = 34
 
     signingConfigs {
         create("releaseBuild") {
-            val pwd = System.getenv("MOVTERY_KEYSTORE_PASSWORD")
-            storeFile = file("movtery-key.jks")
+            val pwd = System.getenv("REALFITREX_KEYSTORE_PASSWORD") ?: System.getenv("MOVTERY_KEYSTORE_PASSWORD")
+            val keystoreFile = if (file("realfitrex-key.jks").exists()) file("realfitrex-key.jks") else file("movtery-key.jks")
+            storeFile = keystoreFile
             storePassword = pwd
             keyAlias = "mtp"
             keyPassword = pwd
@@ -69,7 +71,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = nameId
+        applicationId = applicationIdName
         minSdk = 26
         targetSdk = 34
         versionCode = launcherVersionCode
@@ -79,7 +81,7 @@ android {
     }
 
     buildTypes {
-        val storageProviderId = "$nameId.storage_provider"
+        val storageProviderId = "$applicationIdName.storage_provider"
 
         getByName("debug") {
             applicationIdSuffix = ".debug"

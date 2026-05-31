@@ -76,7 +76,7 @@ class AboutInfoPageFragment() : Fragment(R.layout.fragment_about_info_page) {
                 qqGroupButton.visibility = View.GONE
             }
 
-            discordButton.setOnClickListener { ZHTools.openLink(requireActivity(), "https://discord.gg/yDDkTHp4cJ") }
+            discordButton.setOnClickListener { ZHTools.openLink(requireActivity(), "https://discord.gg/e6wBxVTCat") }
         }
     }
 
@@ -87,9 +87,9 @@ class AboutInfoPageFragment() : Fragment(R.layout.fragment_about_info_page) {
         mAboutData.add(
             AboutItemBean(
                 resources.getDrawable(R.drawable.ic_pojav_full, requireContext().theme),
-                "PojavLauncherTeam",
-                getString(R.string.about_PojavLauncher_desc),
-                AboutItemButtonBean(requireActivity(), "Github", "https://github.com/PojavLauncherTeam/PojavLauncher")
+                "RealFitrex Launcher",
+                getString(R.string.about_RealFitrex_desc),
+                AboutItemButtonBean(requireActivity(), "Github", "https://github.com/fitrextest222-arch/RealFitrex-Launcher")
             )
         )
         mAboutData.add(
