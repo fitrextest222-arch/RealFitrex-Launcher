@@ -1,0 +1,77 @@
+name: Android CI Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Build ZalithLauncher APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Install Android SDK command-line tools and platforms
+        env:
+          ANDROID_SDK_ROOT: ${{ runner.temp }}/android-sdk
+        run: |
+          set -e
+          mkdir -p "$ANDROID_SDK_ROOT/cmdline-tools"
+          cd "$ANDROID_SDK_ROOT/cmdline-tools"
+          curl -sS https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip -o cmdline.zip
+          unzip -q cmdline.zip
+          mv cmdline-tools latest || true
+          yes | "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" --sdk_root="$ANDROID_SDK_ROOT" "platform-tools" "platforms;android-33" "build-tools;33.0.2"
+
+      - name: Generate mipmap PNGs from logo.svg
+        run: |
+          python3 -m pip install --user cairosvg
+          python3 - <<'PY'
+from cairosvg import svg2png
+from pathlib import Path
+logo = Path('logo.svg')
+if not logo.exists():
+    raise SystemExit('logo.svg not found')
+sizes = {
+    'mipmap-mdpi':48,
+    'mipmap-hdpi':72,
+    'mipmap-xhdpi':96,
+    'mipmap-xxhdpi':144,
+    'mipmap-xxxhdpi':192,
+}
+res_base = Path('ZalithLauncher/src/main/res')
+for folder,size in sizes.items():
+    out_dir = res_base / folder
+    out_dir.mkdir(parents=True, exist_ok=True)
+    for name in ['ic_launcher.png','ic_launcher_round.png','ic_launcher_foreground.png']:
+        out = out_dir / name
+        svg2png(url=str(logo), write_to=str(out), output_width=size, output_height=size)
+print('generated icons')
+PY
+
+      - name: Build APK and capture log
+        run: |
+          mkdir -p artifacts
+          ./gradlew :ZalithLauncher:assembleDebug --no-daemon --quiet | tee artifacts/build-log.txt
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: zalithlauncher-apk
+          path: ZalithLauncher/build/outputs/apk/debug/*.apk
+
+      - name: Upload build log
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: artifacts/build-log.txt
