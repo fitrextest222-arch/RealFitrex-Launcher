@@ -4,26 +4,23 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <!-- Foreground: stylized "RF" in white. Background gradient is in ic_launcher_background.xml -->
-    <!-- R letter: vertical stem + top bar + diagonal leg -->
+    <!-- Foreground: stylized "RF" in white, matching logo.svg -->
     <path
         android:fillColor="#FFFFFFFF"
-        android:pathData="M18,18 h18 v72 h-18 z" />
+        android:pathData="M20,18 h16 v72 h-16 z" />
     <path
         android:fillColor="#FFFFFFFF"
-        android:pathData="M36,18 h24 c6,0 10,4 10,10 v8 c0,6-4,10-10,10 h-24 z" />
+        android:pathData="M36,18 h22 c5.523,0 10,4.477 10,10 v8 c0,5.523 -4.477,10 -10,10 h-22 z" />
     <path
         android:fillColor="#FFFFFFFF"
-        android:pathData="M48,54 l18,36 h-12 l-18,-36 z" />
-
-    <!-- F letter: vertical stem + two horizontal bars -->
+        android:pathData="M46,54 l18,36 h-12 l-18,-36 z" />
     <path
         android:fillColor="#FFFFFFFF"
-        android:pathData="M72,18 h12 v72 h-12 z" />
+        android:pathData="M72,18 h14 v72 h-14 z" />
     <path
         android:fillColor="#FFFFFFFF"
-        android:pathData="M72,18 h30 v12 h-30 z" />
+        android:pathData="M86,18 h24 v12 h-24 z" />
     <path
         android:fillColor="#FFFFFFFF"
-        android:pathData="M72,42 h24 v12 h-24 z" />
+        android:pathData="M86,42 h18 v12 h-18 z" />
 </vector>
