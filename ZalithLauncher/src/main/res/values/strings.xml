@@ -288,6 +288,7 @@
     <!-- Account -->
     <string name="account_login_done">Login Complete</string>
     <string name="account_add">Add Account</string>
+    <string name="account_no_saved_accounts">No saved accounts</string>
     <string name="account_wardrobe_button">Wardrobe</string>
     <string name="account_wardrobe_status">Skin: %1$s\nCape: %2$s</string>
     <string name="account_wardrobe_skin_cached">Cached</string>
