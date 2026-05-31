@@ -7,6 +7,7 @@ import com.google.gson.JsonSyntaxException;
 import com.movtery.zalithlauncher.feature.accounts.AccountsManager;
 import com.movtery.zalithlauncher.feature.log.Logging;
 import com.movtery.zalithlauncher.utils.path.PathManager;
+import com.movtery.zalithlauncher.utils.skin.CapeFileDownloader;
 import com.movtery.zalithlauncher.utils.skin.SkinFileDownloader;
 import com.movtery.zalithlauncher.utils.stringutils.StringUtilsKt;
 
@@ -42,6 +43,14 @@ public class MinecraftAccount {
         updateSkin(StringUtilsKt.removeSuffix(otherBaseUrl, "/") + "/sessionserver/");
     }
 
+    public void updateMicrosoftCape() {
+        updateCape("https://sessionserver.mojang.com");
+    }
+
+    public void updateOtherCape() {
+        updateCape(StringUtilsKt.removeSuffix(otherBaseUrl, "/") + "/sessionserver/");
+    }
+
     private void updateSkin(String url) {
         File skinFile = new File(PathManager.DIR_USER_SKIN, uniqueUUID + ".png");
         if (skinFile.exists()) FileUtils.deleteQuietly(skinFile); //清除一次皮肤文件
@@ -51,6 +60,25 @@ public class MinecraftAccount {
         } catch (Exception e) {
             Logging.i("SkinLoader", "Could not update skin\n" + Tools.printToString(e));
         }
+    }
+
+    private void updateCape(String url) {
+        File capeFile = new File(PathManager.DIR_USER_CAPE, uniqueUUID + ".png");
+        if (capeFile.exists()) FileUtils.deleteQuietly(capeFile);
+        try {
+            new CapeFileDownloader().yggdrasil(url, capeFile, profileId);
+            Logging.i("SkinLoader", "Update cape success");
+        } catch (Exception e) {
+            Logging.i("SkinLoader", "Could not update cape\n" + Tools.printToString(e));
+        }
+    }
+
+    public File getSkinFile() {
+        return new File(PathManager.DIR_USER_SKIN, uniqueUUID + ".png");
+    }
+
+    public File getCapeFile() {
+        return new File(PathManager.DIR_USER_CAPE, uniqueUUID + ".png");
     }
 
     public void save() throws IOException {

@@ -26,6 +26,7 @@ class PathManager {
         lateinit var DIR_BACKGROUND: File
         lateinit var DIR_APP_CACHE: File
         lateinit var DIR_USER_SKIN: File
+        lateinit var DIR_USER_CAPE: File
         lateinit var DIR_INSTALLED_RENDERER_PLUGIN: File
 
         lateinit var FILE_SETTINGS: File
@@ -51,6 +52,7 @@ class PathManager {
             DIR_BACKGROUND = File("$DIR_GAME_HOME/background")
             DIR_APP_CACHE = context.externalCacheDir!!
             DIR_USER_SKIN = File(DIR_FILE, "/user_skin")
+            DIR_USER_CAPE = File(DIR_FILE, "/user_cape")
             DIR_INSTALLED_RENDERER_PLUGIN = File(DIR_FILE, "/renderer_plugins")
             DIR_RUNTIME_MOD = context.getDir("runtime_mod", 0)?.also {
                 it.mkdirs()
@@ -66,6 +68,7 @@ class PathManager {
                 //此处的账号文件已不再使用，需要检查并清除
                 FileUtils.deleteQuietly(File("$DIR_DATA/accounts"))
                 FileUtils.deleteQuietly(File(DIR_DATA, "/user_skin"))
+                FileUtils.deleteQuietly(File(DIR_DATA, "/user_cape"))
             }
         }
 

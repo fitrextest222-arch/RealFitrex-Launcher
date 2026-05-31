@@ -150,8 +150,11 @@ class AccountFragment : FragmentWithAnim(R.layout.fragment_account), View.OnClic
                             File(PathManager.DIR_ACCOUNT_NEW, account.uniqueUUID)
                         val userSkinFile =
                             File(PathManager.DIR_USER_SKIN, account.uniqueUUID + ".png")
+                        val userCapeFile =
+                            File(PathManager.DIR_USER_CAPE, account.uniqueUUID + ".png")
                         if (accountFile.exists()) FileUtils.deleteQuietly(accountFile)
                         if (userSkinFile.exists()) FileUtils.deleteQuietly(userSkinFile)
+                        if (userCapeFile.exists()) FileUtils.deleteQuietly(userCapeFile)
                         reloadAccounts()
                     }.showDialog()
             }
@@ -222,6 +225,7 @@ class AccountFragment : FragmentWithAnim(R.layout.fragment_account), View.OnClic
             }
 
             addServer.setOnClickListener(this@AccountFragment)
+            wardrobeButton.setOnClickListener(this@AccountFragment)
             returnButton.setOnClickListener(this@AccountFragment)
         }
 
@@ -516,6 +520,12 @@ class AccountFragment : FragmentWithAnim(R.layout.fragment_account), View.OnClic
                         addUniformPass.setOnClickListener(onClickListener)
                     })
                 }
+                wardrobeButton -> ZHTools.swapFragmentWithAnim(
+                    this@AccountFragment,
+                    WardrobeFragment::class.java,
+                    WardrobeFragment.TAG,
+                    null
+                )
                 else -> {}
             }
         }

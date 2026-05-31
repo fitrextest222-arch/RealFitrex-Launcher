@@ -167,12 +167,25 @@
                 app:layout_constraintStart_toStartOf="parent"
                 tools:ignore="MissingConstraints" />
 
+            <com.movtery.zalithlauncher.ui.view.AnimButton
+                android:id="@+id/wardrobe_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:text="@string/account_wardrobe_button"
+                android:textAllCaps="true"
+                app:layout_constraintBottom_toTopOf="@id/return_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints" />
+
             <include
                 android:id="@+id/view_account"
                 layout="@layout/view_account"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@id/return_button"
+                app:layout_constraintBottom_toTopOf="@id/wardrobe_button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
